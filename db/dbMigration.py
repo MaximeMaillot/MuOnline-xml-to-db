@@ -3,9 +3,9 @@
 def dropAllTables(connection):
     connection.execute(
         "DROP TABLE IF EXISTS "
-        "itemlistindex,"
-        "itemlist,"
-        "monsterlist"
+        "ItemListIndex,"
+        "ItemList,"
+        "MonsterList"
     )
 
 # Linked to Mu/Data/Items/ItemList.xml
@@ -84,7 +84,7 @@ def createTableItemList(connection):
 # Linked to Mu/Data/Settings
 
 
-def createMonsterListTable(connection):
+def createTableMonsterList(connection):
     connection.execute(
         "CREATE TABLE IF NOT EXISTS MonsterList("
         "MonsterIndex SMALLINT UNSIGNED,"
@@ -129,4 +129,4 @@ def createMonsterListTable(connection):
 def createAllTable(connection):
     createTableItemListIndex(connection)
     createTableItemList(connection)
-    createMonsterListTable(connection)
+    createTableMonsterList(connection)

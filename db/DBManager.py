@@ -74,7 +74,6 @@ def showChildAttribute(connector, mydoc, tabName, sectionName, parentName="", pa
         sqlString = "INSERT INTO " + tabName + \
             "(" + parentName + nameStr + \
             ") VALUES (" + parentValue + valueStr + ")"
-        print(sqlString)
         connector.cursor().execute(sqlString)
         connector.commit()
         nameStr = ""
