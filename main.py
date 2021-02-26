@@ -23,9 +23,9 @@ dropAllTables(cursor)
 
 createAllTable(cursor)
 
-mydoc = minidom.parse('Mu/Data/Monster/Settings/MonsterLIst.xml')
-feedItemListToDB(connector, mydoc, ("monsterlist"), ("Monster"))
+mydoc = minidom.parse('MuTest/Data/Monster/Settings/MonsterList.xml')
+feedItemListToDB(connector, mydoc, ("MonsterList"), ("Monster"))
 
-mydoc = minidom.parse('Mu/Data/Items/ItemList.xml')
+mydoc = minidom.parse('MuTest/Data/Items/ItemList.xml')
 feedItemListToDB(connector, mydoc, ("ItemListIndex",
                                     "ItemList"), ("Section", "Item"))
