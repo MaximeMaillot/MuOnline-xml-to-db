@@ -4,7 +4,8 @@ def dropAllTables(connection):
     connection.execute(
         "DROP TABLE IF EXISTS "
         "itemlistindex,"
-        "itemlist"
+        "itemlist,"
+        "monsterlist"
     )
 
 # Linked to Mu/Data/Items/ItemList.xml
@@ -13,9 +14,9 @@ def dropAllTables(connection):
 def createTableItemListIndex(connection):
     connection.execute(
         "CREATE TABLE IF NOT EXISTS ItemListIndex("
-        "SIndexz SMALLINT UNSIGNED,"
+        "SectionIndex SMALLINT UNSIGNED,"
         "name varchar(50),"
-        "primary key (SIndexz))"
+        "primary key (SectionIndex))"
     )
 
 # Linked to Mu/Data/Items/ItemList.xml
@@ -24,16 +25,16 @@ def createTableItemListIndex(connection):
 def createTableItemList(connection):
     connection.execute(
         "CREATE TABLE IF NOT EXISTS ItemList("
-        "SIndexz SMALLINT UNSIGNED,"
-        "Indexz SMALLINT UNSIGNED,"
+        "SectionIndex SMALLINT UNSIGNED,"
+        "ItemIndex SMALLINT UNSIGNED,"
         "Slot TINYINT,"
         "SkillIndex SMALLINT UNSIGNED,"
         "TwoHand BOOLEAN,"
         "Width TINYINT UNSIGNED,"
         "Height TINYINT UNSIGNED,"
         "Serial BOOLEAN,"
-        "Optionz BOOLEAN,"
-        "Dropz BOOLEAN,"
+        "Options BOOLEAN,"
+        "Drops BOOLEAN,"
         "DropLevel TINYINT UNSIGNED DEFAULT NULL,"
         "DamageMin TINYINT UNSIGNED DEFAULT NULL,"
         "DamageMax TINYINT UNSIGNED DEFAULT NULL,"
@@ -77,11 +78,55 @@ def createTableItemList(connection):
         "KindB TINYINT UNSIGNED,"
         "Overlap TINYINT UNSIGNED,"
         "NAME VARCHAR(50),"
-        "PRIMARY KEY (SIndexz,Indexz))"
+        "PRIMARY KEY (SectionIndex,ItemIndex))"
+    )
+
+# Linked to Mu/Data/Settings
+
+
+def createMonsterListTable(connection):
+    connection.execute(
+        "CREATE TABLE IF NOT EXISTS MonsterList("
+        "MonsterIndex SMALLINT UNSIGNED,"
+        "ExpType BOOLEAN,"
+        "Name VARCHAR(50),"
+        "Level TINYINT UNSIGNED,"
+        "HP INT UNSIGNED,"
+        "MP TINYINT UNSIGNED,"
+        "DamageMin SMALLINT UNSIGNED,"
+        "DamageMax SMALLINT UNSIGNED,"
+        "Defense SMALLINT UNSIGNED,"
+        "MagicDefense TINYINT UNSIGNED,"
+        "AttackRate SMALLINT UNSIGNED,"
+        "BlockRate SMALLINT UNSIGNED,"
+        "MoveRange TINYINT UNSIGNED,"
+        "AttackType TINYINT UNSIGNED,"
+        "AttackRange TINYINT UNSIGNED,"
+        "ViewRange TINYINT UNSIGNED,"
+        "MoveSpeed SMALLINT UNSIGNED,"
+        "AttackSpeed SMALLINT UNSIGNED,"
+        "RegenTime SMALLINT UNSIGNED,"
+        "Attribute TINYINT UNSIGNED,"
+        "ItemDropRate SMALLINT UNSIGNED,"
+        "MoneyDropRate SMALLINT UNSIGNED,"
+        "MaxItemLevel TINYINT UNSIGNED,"
+        "MonsterSKill TINYINT UNSIGNED,"
+        "IceRes TINYINT UNSIGNED,"
+        "PoisonRes TINYINT UNSIGNED,"
+        "LightRes TINYINT UNSIGNED,"
+        "FireRes TINYINT UNSIGNED,"
+        "PentagramMainAttrib TINYINT UNSIGNED,"
+        "PentagramAttribPattern TINYINT UNSIGNED,"
+        "PentagramDamageMin INT UNSIGNED,"
+        "PentagramDamageMax INT UNSIGNED,"
+        "PentagramAttackRate SMALLINT UNSIGNED,"
+        "PentagramDefenseRate SMALLINT UNSIGNED,"
+        "PentagramDefense SMALLINT UNSIGNED,"
+        "PRIMARY KEY (MonsterIndex))"
     )
 
 
 def createAllTable(connection):
-    dropAllTables(connection)
     createTableItemListIndex(connection)
     createTableItemList(connection)
+    createMonsterListTable(connection)
