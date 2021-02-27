@@ -27,5 +27,5 @@ mydoc = minidom.parse('Mu/Data/Monster/Settings/MonsterLIst.xml')
 feedItemListToDB(connector, mydoc, ("monsterlist"), ("Monster"))
 
 mydoc = minidom.parse('Mu/Data/Items/ItemList.xml')
-feedItemListToDB(connector, mydoc, ("ItemListIndex",
+feedItemListToDB(connector, mydoc, ("ItemIndexList",
                                     "ItemList"), ("Section", "Item"))

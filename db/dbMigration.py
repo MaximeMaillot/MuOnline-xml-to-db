@@ -3,7 +3,7 @@
 def dropAllTables(connection):
     connection.execute(
         "DROP TABLE IF EXISTS "
-        "itemlistindex,"
+        "itemindexlist,"
         "itemlist,"
         "monsterlist"
     )
@@ -13,7 +13,7 @@ def dropAllTables(connection):
 
 def createTableItemListIndex(connection):
     connection.execute(
-        "CREATE TABLE IF NOT EXISTS ItemListIndex("
+        "CREATE TABLE IF NOT EXISTS ItemIndexList("
         "SectionIndex SMALLINT UNSIGNED,"
         "name varchar(50),"
         "primary key (SectionIndex))"

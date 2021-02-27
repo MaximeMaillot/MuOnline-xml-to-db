@@ -28,6 +28,7 @@ def feedItemListToDB(connector, mydoc, listTableName, listSectionName):
 
     elif (deepLevel == 2):
         showParentAttribute(connector, mydoc, listTableName, listSectionName)
+
     else:
         itemLoop(connector, mydoc, listTableName, listSectionName,
                  listNameStr, listValueStr, listParentValue, idList, deepLevel)
@@ -50,6 +51,7 @@ def showParentAttribute(connector, mydoc, tabName, sectionName):
                 valueStr += ",'" + protectName(attributes[1]) + "'"
         sqlString = "INSERT INTO " + tabName[0] + \
             "(" + nameStr + ") VALUES (" + valueStr + ")"
+        print(sqlString)
         connector.cursor().execute(sqlString)
         connector.commit()
         nameStr = ""
@@ -74,7 +76,7 @@ def showChildAttribute(connector, mydoc, tabName, sectionName, parentName="", pa
         sqlString = "INSERT INTO " + tabName + \
             "(" + parentName + nameStr + \
             ") VALUES (" + parentValue + valueStr + ")"
-        print(sqlString)
+        # print(sqlString)
         connector.cursor().execute(sqlString)
         connector.commit()
         nameStr = ""
