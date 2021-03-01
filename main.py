@@ -26,6 +26,6 @@ createAllTable(cursor)
 mydoc = minidom.parse('MuTest/Data/Monster/Settings/MonsterList.xml')
 feedItemListToDB(connector, mydoc, ("MonsterList"), ("Monster"))
 
-mydoc = minidom.parse('Mu/Data/Items/ItemList.xml')
+mydoc = minidom.parse('MuTest/Data/Items/ItemList.xml')
 feedItemListToDB(connector, mydoc, ("ItemIndexList",
                                     "ItemList"), ("Section", "Item"))

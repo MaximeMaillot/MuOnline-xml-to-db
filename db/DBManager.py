@@ -51,7 +51,7 @@ def showParentAttribute(connector, mydoc, tabName, sectionName):
                 valueStr += ",'" + protectName(attributes[1]) + "'"
         sqlString = "INSERT INTO " + tabName[0] + \
             "(" + nameStr + ") VALUES (" + valueStr + ")"
-        print(sqlString)
+        # print(sqlString)
         connector.cursor().execute(sqlString)
         connector.commit()
         nameStr = ""
